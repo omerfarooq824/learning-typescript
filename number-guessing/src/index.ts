@@ -6,24 +6,26 @@ const randNumber = Math.floor(Math.random() * 15 + 1)
 let answer = null;
 let guessTaken: null | number = null;
 
+console.log("I'm thinking of number between 1 to 15.\n");
+
 for (guessTaken = 1; guessTaken < 6; guessTaken++){
     answer = await inquirer.prompt([{
         type: 'number',
         name: 'guess',
-        message: 'Take a guess between 1-15:',
+        message: 'Take a guess:',
     }])
     if(answer.guess < randNumber){
-        console.log('your guess is too low! try again');
+        console.log('Your guess is too low! try again');
     }
     else if(answer.guess > randNumber){
-        console.log('your guess is too high! try again');
+        console.log('Your guess is too high! try again');
     }
     else{
-        break;
+        break; // this condition is the correct guess.
     }
 }
 if (answer.guess === randNumber){
-    console.log(`Congrats! you guessed the number in ${guessTaken} try.`)
+    console.log(`Good Job! you guessed the number in ${guessTaken} guesses!`)
 }
 else{
     console.log(`Nope! The number I was thinking of was ${randNumber}. `)
